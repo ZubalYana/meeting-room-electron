@@ -1,31 +1,54 @@
 import { useState } from "react";
 import RoomForm from "../components/RoomForm";
 import RoomList from "../components/RoomList";
+import BookRoom from "../components/BookRoom";
 import { Button, Dialog, DialogContent } from "@mui/material";
 
 export default function Dashboard() {
     const [reloadRooms, setReloadRooms] = useState(false);
-    const [openForm, setOpenForm] = useState(false);
 
-    const handleOpen = () => setOpenForm(true);
-    const handleClose = () => setOpenForm(false);
+    const [openRoomForm, setOpenRoomForm] = useState(false);
+    const handleOpenRoomForm = () => setOpenRoomForm(true);
+    const handleCloseRoomForm = () => setOpenRoomForm(false);
+
+    const [openBookRoom, setOpenBookRoom] = useState(false);
+    const handleOpenBookRoom = () => setOpenBookRoom(true);
+    const handleCloseBookRoom = () => setOpenBookRoom(false);
 
     return (
         <div style={{ padding: "15px" }}>
             <h2>Meeting Rooms</h2>
 
-            <Button variant="contained" onClick={handleOpen} sx={{ marginBottom: 2 }}>
+            <Button
+                variant="contained"
+                onClick={handleOpenRoomForm}
+                sx={{ marginRight: 2, marginBottom: 2 }}
+            >
                 Create New Room
             </Button>
 
-            <Dialog open={openForm} onClose={handleClose} fullWidth maxWidth="sm">
+            <Button
+                variant="contained"
+                onClick={handleOpenBookRoom}
+                sx={{ marginBottom: 2 }}
+            >
+                Book a Room
+            </Button>
+
+            <Dialog open={openRoomForm} onClose={handleCloseRoomForm} fullWidth maxWidth="sm">
                 <DialogContent>
                     <RoomForm
                         onRoomCreated={() => {
                             setReloadRooms(prev => !prev);
-                            handleClose();
+                            handleCloseRoomForm();
                         }}
                     />
+                </DialogContent>
+            </Dialog>
+
+            <Dialog open={openBookRoom} onClose={handleCloseBookRoom} fullWidth maxWidth="sm">
+                <DialogContent>
+                    <BookRoom onBookingCreated={handleCloseBookRoom} />
                 </DialogContent>
             </Dialog>
 
