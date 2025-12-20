@@ -1,10 +1,10 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Main } from './main';
-import './index.css'
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { Main } from "./main";
+import "./index.css";
 
+const container = document.getElementById("root");
+if (!container) throw new Error("Root container #root not found");
 
-const container = document.querySelector('#root')!;
 const root = createRoot(container);
 root.render(<Main />);
-
