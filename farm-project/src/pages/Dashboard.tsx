@@ -14,7 +14,10 @@ export default function Dashboard() {
     const [openBookRoom, setOpenBookRoom] = useState(false);
     const handleOpenBookRoom = () => setOpenBookRoom(true);
     const handleCloseBookRoom = () => setOpenBookRoom(false);
-
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        window.location.reload();
+    };
     return (
         <div style={{ padding: "15px" }}>
             <h2>Meeting Rooms</h2>
@@ -53,6 +56,14 @@ export default function Dashboard() {
             </Dialog>
 
             <RoomList reloadTrigger={reloadRooms} />
+            <Button
+                variant="outlined"
+                color="error"
+                onClick={handleLogout}
+                sx={{ marginBottom: 2 }}
+            >
+                Log Out
+            </Button>
         </div>
     );
 }
