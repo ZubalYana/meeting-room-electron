@@ -26,7 +26,7 @@ export default function Dashboard() {
             <Button
                 variant="contained"
                 onClick={handleOpenRoomForm}
-                sx={{ marginRight: 2, marginBottom: 2 }}
+                sx={{ marginRight: 2, marginBottom: 2, backgroundColor: "#4f46e5" }}
             >
                 Create New Room
             </Button>
@@ -34,7 +34,7 @@ export default function Dashboard() {
             <Button
                 variant="contained"
                 onClick={handleOpenBookRoom}
-                sx={{ marginBottom: 2 }}
+                sx={{ marginBottom: 2, backgroundColor: "#4f46e5" }}
             >
                 Book a Room
             </Button>

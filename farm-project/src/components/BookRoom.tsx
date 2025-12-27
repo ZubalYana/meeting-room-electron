@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, TextField, Button, Typography, Alert, MenuItem } from "@mui/material";
+import { Box, TextField, Button, Alert, MenuItem } from "@mui/material";
 
 const API_URL = "http://localhost:5000";
 
@@ -54,8 +54,8 @@ export default function BookRoom({ onBookingCreated }: { onBookingCreated?: () =
     };
 
     return (
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2, maxWidth: 400, margin: "20px auto" }}>
-            <Typography variant="h6">Book a Room</Typography>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2, margin: "20px auto" }}>
+            <h4 style={{ margin: "0", fontSize: "1.3rem" }}>Book a Room</h4>
             {error && <Alert severity="error">{error}</Alert>}
             {success && <Alert severity="success">{success}</Alert>}
             <TextField select label="Room" value={roomId} onChange={e => setRoomId(e.target.value)}>
@@ -64,7 +64,7 @@ export default function BookRoom({ onBookingCreated }: { onBookingCreated?: () =
             <TextField label="Date" type="date" InputLabelProps={{ shrink: true }} value={date} onChange={e => setDate(e.target.value)} />
             <TextField label="Start Time" type="time" InputLabelProps={{ shrink: true }} value={startTime} onChange={e => setStartTime(e.target.value)} />
             <TextField label="End Time" type="time" InputLabelProps={{ shrink: true }} value={endTime} onChange={e => setEndTime(e.target.value)} />
-            <Button variant="contained" onClick={handleSubmit}>Book Room</Button>
+            <Button variant="contained" onClick={handleSubmit} sx={{ backgroundColor: "#4f46e5" }}>Book Room</Button>
 
         </Box>
     );
