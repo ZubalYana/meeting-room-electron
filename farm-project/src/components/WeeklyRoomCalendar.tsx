@@ -2,7 +2,14 @@ import { useBookings } from "../hooks/useBookings";
 import { getWeek } from "../utils/week";
 import { buildZonedDate } from "../utils/datetime";
 import { format, differenceInMinutes } from "date-fns";
-
+import {
+    CALENDAR_START_HOUR,
+    CALENDAR_END_HOUR,
+} from "../config/calendar";
+const hours = Array.from(
+    { length: CALENDAR_END_HOUR - CALENDAR_START_HOUR },
+    (_, i) => i + CALENDAR_START_HOUR
+);
 const ROOM_TIMEZONE = "Europe/Kiev";
 
 export function WeeklyRoomCalendar() {
@@ -24,17 +31,27 @@ export function WeeklyRoomCalendar() {
             </div>
 
             <div className="grid">
-                {Array.from({ length: 24 }).map((_, hour) => (
+                {hours.map(hour => (
                     <div key={hour} className="row">
-                        <div className="hour">{hour}:00</div>
+                        <div className="hour">
+                            {String(hour).padStart(2, "0")}:00
+                        </div>
 
                         {week.map(day => (
                             <div key={day.toISOString()} className="cell">
                                 {bookings
-                                    .filter(b =>
-                                        format(new Date(b.date), "yyyy-MM-dd") ===
-                                        format(day, "yyyy-MM-dd")
-                                    )
+                                    .filter(b => {
+                                        const start = buildZonedDate(
+                                            b.date,
+                                            b.startTime,
+                                            ROOM_TIMEZONE
+                                        );
+
+                                        return (
+                                            start.getHours() === hour &&
+                                            start.toDateString() === day.toDateString()
+                                        );
+                                    })
                                     .map(b => {
                                         const start = buildZonedDate(
                                             b.date,
@@ -47,17 +64,15 @@ export function WeeklyRoomCalendar() {
                                             ROOM_TIMEZONE
                                         );
 
-                                        if (start.getHours() !== hour) return null;
-
-                                        const duration =
-                                            differenceInMinutes(end, start);
+                                        const durationMinutes =
+                                            (end.getTime() - start.getTime()) / 60000;
 
                                         return (
                                             <div
                                                 key={b._id}
                                                 className="booking"
                                                 style={{
-                                                    height: `${duration}px`,
+                                                    height: `${durationMinutes}px`,
                                                 }}
                                             >
                                                 <strong>User:</strong> {b.user}
@@ -70,6 +85,7 @@ export function WeeklyRoomCalendar() {
                         ))}
                     </div>
                 ))}
+
             </div>
         </div>
     );
