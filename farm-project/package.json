@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "dist-electron/main.js",
   "type": "module",
+  "icon": "src/assets/logo",
   "scripts": {
     "dev": "farm",
     "build": "farm build && electron-forge package",

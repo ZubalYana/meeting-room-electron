@@ -9,6 +9,7 @@ const path = require('path');
 const config = {
   packagerConfig: {
     // Ignore all files, including `node_modules`.
+    icon: 'src/assets/logo',
     ignore: /.*/,
     beforeCopy: [(
       buildPath,
