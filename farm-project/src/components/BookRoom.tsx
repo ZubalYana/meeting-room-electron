@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box, TextField, Button, Typography, Alert, MenuItem } from "@mui/material";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "http://localhost:5000";
 
 interface Room {
     _id: string;

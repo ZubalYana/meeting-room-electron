@@ -19,6 +19,5 @@ export function Main() {
   );
 }
 
-// Render
 const container = document.getElementById("root")!;
 createRoot(container).render(<Main />);

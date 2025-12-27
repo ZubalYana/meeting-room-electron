@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Card, CardContent } from "@mui/material";
 
-const API_URL = "http://localhost:5000/api/rooms";
+const API_URL = "http://localhost:5000/rooms";
 
 interface Room {
     _id: string;

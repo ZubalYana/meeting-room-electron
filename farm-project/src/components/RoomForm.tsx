@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Box, TextField, Button, Typography, Alert } from "@mui/material";
 
-const API_URL = "http://localhost:5000/api/rooms";
+const API_URL = "http://localhost:5000/rooms";
 
 export default function RoomForm({ onRoomCreated }: { onRoomCreated: () => void }) {
     const [name, setName] = useState("");

@@ -19,7 +19,7 @@ export default function Dashboard() {
         window.location.reload();
     };
     return (
-        <div style={{ padding: "15px" }}>
+        <div style={{ padding: "15px", paddingTop: "0" }}>
             <h2>Meeting Rooms</h2>
 
             <Button
