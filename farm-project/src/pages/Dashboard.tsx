@@ -3,6 +3,7 @@ import RoomForm from "../components/RoomForm";
 import RoomList from "../components/RoomList";
 import BookRoom from "../components/BookRoom";
 import { Button, Dialog, DialogContent } from "@mui/material";
+import { WeeklyRoomCalendar } from "../components/WeeklyRoomCalendar";
 
 export default function Dashboard() {
     const [reloadRooms, setReloadRooms] = useState(false);
@@ -38,6 +39,8 @@ export default function Dashboard() {
                 Book a Room
             </Button>
 
+            <WeeklyRoomCalendar />
+
             <Dialog open={openRoomForm} onClose={handleCloseRoomForm} fullWidth maxWidth="sm">
                 <DialogContent>
                     <RoomForm
@@ -54,6 +57,7 @@ export default function Dashboard() {
                     <BookRoom onBookingCreated={handleCloseBookRoom} />
                 </DialogContent>
             </Dialog>
+
 
             <RoomList reloadTrigger={reloadRooms} />
             <Button
