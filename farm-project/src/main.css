@@ -6,6 +6,7 @@
   display: grid;
   grid-template-rows: auto 1fr;
   height: 100%;
+  margin-top: 50px;
 }
 
 .header {

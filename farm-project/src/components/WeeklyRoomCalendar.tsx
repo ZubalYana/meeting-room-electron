@@ -73,9 +73,12 @@ export function WeeklyRoomCalendar() {
                                                 className="booking"
                                                 style={{
                                                     height: `${durationMinutes}px`,
+                                                    padding: '10px'
                                                 }}
                                             >
-                                                <strong>User:</strong> {b.user}
+                                                <p style={{ margin: "0px" }}><strong>User:</strong> {b.user.email}</p>
+                                                <br />
+                                                <p style={{ margin: "0px" }}><strong>Room:</strong> {b.room.name}</p>
                                                 <br />
                                                 {b.startTime} – {b.endTime}
                                             </div>

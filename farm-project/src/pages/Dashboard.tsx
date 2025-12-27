@@ -20,7 +20,7 @@ export default function Dashboard() {
         window.location.reload();
     };
     return (
-        <div style={{ padding: "25px", paddingTop: "0" }}>
+        <div style={{ padding: "25px", paddingTop: "20px" }}>
             <h2 style={{ marginTop: "0" }}>Meeting Rooms</h2>
 
             <Button
@@ -30,7 +30,6 @@ export default function Dashboard() {
             >
                 Create New Room
             </Button>
-
             <Button
                 variant="contained"
                 onClick={handleOpenBookRoom}
@@ -38,6 +37,8 @@ export default function Dashboard() {
             >
                 Book a Room
             </Button>
+
+            <RoomList reloadTrigger={reloadRooms} />
 
             <WeeklyRoomCalendar />
 
@@ -58,13 +59,11 @@ export default function Dashboard() {
                 </DialogContent>
             </Dialog>
 
-
-            <RoomList reloadTrigger={reloadRooms} />
             <Button
                 variant="outlined"
                 color="error"
                 onClick={handleLogout}
-                sx={{ marginBottom: 2 }}
+                sx={{ marginTop: 4 }}
             >
                 Log Out
             </Button>
