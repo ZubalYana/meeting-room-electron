@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import Auth from "./components/Auth/Auth";
 import Dashboard from "./pages/Dashboard";
