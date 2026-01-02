@@ -16,6 +16,7 @@ interface Room {
     capacity: number;
     location: string;
     description?: string;
+    advantages?: string;
 }
 
 export default function RoomList({
@@ -54,7 +55,7 @@ export default function RoomList({
             <Box
                 sx={{
                     display: "grid",
-                    gridTemplateColumns: "2fr 1fr 1.5fr 3fr",
+                    gridTemplateColumns: "2fr 1fr 1.5fr 3fr 2fr",
                     px: 2,
                     py: 1,
                     color: "text.secondary",
@@ -66,6 +67,7 @@ export default function RoomList({
                 <span>Capacity</span>
                 <span>Location</span>
                 <span>Description</span>
+                <span>Advantages</span>
             </Box>
 
             <Divider sx={{ mb: 1 }} />
@@ -89,7 +91,7 @@ export default function RoomList({
                         <CardContent
                             sx={{
                                 display: "grid",
-                                gridTemplateColumns: "2fr 1fr 1.5fr 3fr",
+                                gridTemplateColumns: "2fr 1fr 1.5fr 3fr 2fr",
                                 alignItems: "center",
                                 py: "12px !important",
                             }}
@@ -117,6 +119,18 @@ export default function RoomList({
                                 title={room.description}
                             >
                                 {room.description || "—"}
+                            </Typography>
+                            <Typography
+                                variant="body2"
+                                color="text.secondary"
+                                sx={{
+                                    whiteSpace: "nowrap",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                }}
+                                title={room.advantages}
+                            >
+                                {room.advantages || "—"}
                             </Typography>
                         </CardContent>
                     </Card>

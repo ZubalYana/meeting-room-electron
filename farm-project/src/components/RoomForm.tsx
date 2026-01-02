@@ -8,6 +8,7 @@ export default function RoomForm({ onRoomCreated }: { onRoomCreated: () => void 
     const [capacity, setCapacity] = useState<number | "">("");
     const [location, setLocation] = useState("");
     const [description, setDescription] = useState("");
+    const [advantages, setAdvantages] = useState("");
     const [error, setError] = useState<string | null>(null);
 
     const handleSubmit = async () => {
@@ -21,11 +22,11 @@ export default function RoomForm({ onRoomCreated }: { onRoomCreated: () => void 
             const res = await fetch(API_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, capacity, location, description }),
+                body: JSON.stringify({ name, capacity, location, description, advantages }),
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data.message || "Error creating room");
-            setName(""); setCapacity(""); setLocation(""); setDescription("");
+            setName(""); setCapacity(""); setLocation(""); setDescription(""); setAdvantages("");
             onRoomCreated();
         } catch (err: any) {
             setError(err.message);
@@ -40,6 +41,7 @@ export default function RoomForm({ onRoomCreated }: { onRoomCreated: () => void 
             <TextField label="Capacity" type="number" value={capacity} onChange={e => setCapacity(Number(e.target.value))} fullWidth />
             <TextField label="Location" value={location} onChange={e => setLocation(e.target.value)} fullWidth />
             <TextField label="Description (optional)" value={description} onChange={e => setDescription(e.target.value)} fullWidth />
+            <TextField label="Advantages (optional)" value={advantages} onChange={e => setAdvantages(e.target.value)} fullWidth />
             <Button variant="contained" onClick={handleSubmit} sx={{ backgroundColor: "#4f46e5" }}>Create Room</Button>
         </Box>
     );
