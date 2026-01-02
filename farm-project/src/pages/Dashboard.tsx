@@ -2,6 +2,7 @@ import { useState } from "react";
 import RoomForm from "../components/RoomForm";
 import RoomList from "../components/RoomList";
 import BookRoom from "../components/BookRoom";
+import RoomStatsChart from "../components/RoomStatsChart";
 import { Button, Dialog, DialogContent } from "@mui/material";
 import { WeeklyRoomCalendar } from "../components/WeeklyRoomCalendar";
 
@@ -39,8 +40,9 @@ export default function Dashboard() {
             </Button>
 
             <RoomList reloadTrigger={reloadRooms} />
+            <RoomStatsChart />
 
-            <div style={{ width: "100%", display: "flex", justifyContent: "start" }}>
+            <div style={{ width: "100%", display: "flex", justifyContent: "start", marginTop: "40px" }}>
                 <WeeklyRoomCalendar />
             </div>
 
