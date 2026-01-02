@@ -2,52 +2,86 @@
   font-family: Montserrat;
 }
 
-.calendar {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  height: 100%;
-  margin-top: 50px;
+.weekly-room-calendar {
+  background-color: #fff;
+  border-radius: 12px;
+  max-width: 1200px;
 }
 
-.header {
-  display: grid;
-  grid-template-columns: 60px repeat(7, 1fr);
+.calendar-title {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
 }
 
-.day-header {
-  text-align: center;
+.fc {
+  --fc-border-color: #e5e7eb;
+  --fc-page-bg-color: #ffffff;
+  --fc-neutral-bg-color: #f9fafb;
+  --fc-today-bg-color: #f3f4f6;
+  --fc-list-event-hover-bg-color: #f3f4f6;
+}
+
+.fc-theme-standard th {
+  border: none;
+  border-bottom: 1px solid var(--fc-border-color);
+  padding: 10px 0;
+}
+
+.fc-col-header-cell-cushion {
+  color: #374151;
   font-weight: 600;
+  font-size: 14px;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.grid {
-  overflow-y: auto;
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 60px repeat(7, 1fr);
-  min-height: 60px;
-  border-bottom: 1px solid #eee;
-}
-
-.hour {
+.fc-timegrid-slot-label-cushion {
   font-size: 12px;
-  padding: 4px;
+  color: #9ca3af;
+  font-weight: 500;
 }
 
-.cell {
-  position: relative;
-  border-left: 1px solid #eee;
+.fc-timegrid-slot {
+  height: 48px;
 }
 
-.booking {
-  position: absolute;
-  top: 0;
-  left: 4px;
-  right: 4px;
-  background: #4f46e5;
+.fc-timegrid-event {
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin: 2px !important;
+}
+
+.calendar-event {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
   color: white;
-  padding: 4px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.calendar-event-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.calendar-event-time {
   font-size: 11px;
-  border-radius: 4px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.fc-v-event {
+  background-color: transparent;
+  border: none;
 }

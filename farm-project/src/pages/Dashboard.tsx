@@ -40,7 +40,9 @@ export default function Dashboard() {
 
             <RoomList reloadTrigger={reloadRooms} />
 
-            <WeeklyRoomCalendar />
+            <div style={{ width: "100%", display: "flex", justifyContent: "start" }}>
+                <WeeklyRoomCalendar />
+            </div>
 
             <Dialog open={openRoomForm} onClose={handleCloseRoomForm} fullWidth maxWidth="sm">
                 <DialogContent>
